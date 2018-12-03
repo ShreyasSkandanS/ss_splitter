@@ -1,0 +1,13 @@
+<launch>
+  <arg name="robot" default="fla"/>
+
+  <group ns="$(arg robot)">
+    <!-- Splitter Launch -->
+    <node pkg="ss_splitter" type="split_image" name="ss_splitter">
+
+      <remap from="left/image_raw" to="/$(arg robot)/ovc/left/image_raw"/>
+      <remap from="right/image_raw" to="/$(arg robot)/ovc/right/image_raw"/>
+      <remap from="image" to="/$(arg robot)/ovc_node/image_drop"/>
+    </node>
+  </group>
+</launch>
